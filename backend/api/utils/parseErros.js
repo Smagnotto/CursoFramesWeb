@@ -1,9 +1,7 @@
 const _ = require('lodash');
 
 function sendErrorsOrNext(req, res, next) {
-    const bundle = res.locals.bundle; //Retorna os erros que deram no banco.
-
-    console.log(bundle);
+    const bundle = res.locals.bundle; //Retorna os erros que deram no banco mongo
 
     if (bundle.errors) {
         var errors = parseErrors(bundle.errors);
@@ -20,4 +18,4 @@ function parseErrors(nodeRestfulErrors) {
 }
 
 
-module.exports = sendErrorsOrNext;
+module.exports = { sendErrorsOrNext };
