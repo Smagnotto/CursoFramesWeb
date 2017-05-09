@@ -7,7 +7,7 @@ gulp.task('server', ['watch'], function() {
     .pipe(webserver({
         livereload: true,
         port: 3000,
-        open: true //starta o brownser apontando pra porta 3000
+        open: true //starta o brownser apontando pra porta 3000n
     }))
 });
 
