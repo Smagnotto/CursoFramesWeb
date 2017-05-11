@@ -3,22 +3,22 @@
 <section class="content">
     <div class="nav-tabs-custom" ng-controller="BillingCycleController as billingCycleCtrl">
         <ul class="nav nav-tabs">
-            <li>
+            <li ng-show="billingCycleCtrl.tabList">
                 <a href data-target="#tabList" data-toggle="tab">
                     <i class="fa fa-bars"></i> Lista
                 </a>
             </li>
-            <li>
+            <li ng-if="billingCycleCtrl.tabCreate">
                 <a href data-target="#tabCreate" data-toggle="tab">
                     <i class="fa fa-plus"></i> Incluir
                 </a>
             </li>
-            <li>
+            <li ng-if="billingCycleCtrl.tabUpdate">
                 <a href data-target="#tabUpdate" data-toggle="tab">
                     <i class="fa fa-pencil"></i> Editar
                 </a>
             </li>
-            <li>
+            <li ng-if="billingCycleCtrl.tabDelete">
                 <a href data-target="#tabDelete" data-toggle="tab">
                     <i class="fa fa-trash-o"></i> Excluir
                 </a>
@@ -26,10 +26,10 @@
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane" id="tabList" ng-include="'billingCycle/list.html'"></div>
-            <div class="tab-pane" id="tabCreate" ng-include="'billingCycle/form.html'"></div>
-            <div class="tab-pane" id="tabUpdate" ng-include="'billingCycle/form.html'"></div>
-            <div class="tab-pane" id="tabDelete" ng-include="'billingCycle/form.html'"></div>
+            <div ng-if="billingCycleCtrl.tabList" class="tab-pane" id="tabList" ng-include="'billingCycle/list.html'"></div>
+            <div ng-if="billingCycleCtrl.tabCreate" class="tab-pane" id="tabCreate" ng-include="'billingCycle/form.html'"></div>
+            <div ng-if="billingCycleCtrl.tabUpdate" class="tab-pane" id="tabUpdate" ng-include="'billingCycle/form.html'"></div>
+            <div ng-if="billingCycleCtrl.tabDelete" class="tab-pane" id="tabDelete" ng-include="'billingCycle/form.html'"></div>
         </div>
     </div>
 </section>
