@@ -1,12 +1,12 @@
 <div role="form">
     <div class="box-body"> 
-        <field grid="12 6 4" id="name" label="Nome" placeholder="Informe o nome"></field>
-        <field grid="12 6 4" id="mes" label="Mês" placeholder="Informe o mês" type="number"></field>
-        <field grid="12 6 4" id="ano" label="Ano" placeholder="Informe o ano" type="ano"></field>
+        <field grid="12 6 4" id="name" label="Nome" placeholder="Informe o nome" model="billingCycleCtrl.billingCycle.name"></field>
+        <field grid="12 6 4" id="mes" label="Mês" placeholder="Informe o mês" type="number" model="billingCycleCtrl.billingCycle.month"></field>
+        <field grid="12 6 4" id="ano" label="Ano" placeholder="Informe o ano" type="ano" model="billingCycleCtrl.billingCycle.year"></field>
     </div>
     
     <div class="box-footer">
-        <button class="btn btn-primary">Incluir</button>
+        <button class="btn btn-primary" ng-click="billingCycleCtrl.create()">Incluir</button>
         <button class="btn btn-info">Alterar</button>
         <button class="btn btn-danger">Excluir</button>
         <button class="btn btn-default">Cancelar</button>
