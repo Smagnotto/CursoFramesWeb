@@ -20,6 +20,10 @@
             addMsgs(msgs, 'Erro', 'error');
         }
 
-        return { addSuccess, addError }
+        function addWarning(msgs) {
+            addMsgs(msgs, 'Alerta', 'warning');
+        }
+
+        return { addSuccess, addError, addWarning }
     }
 })();

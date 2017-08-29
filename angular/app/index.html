@@ -2,17 +2,17 @@
 <html ng-app="primeiraApp">
     <head>
         <meta charset="UTF-8">
-        <title>Primeira App</title>
+        <title>{{ consts.appName }}</title>
 
         <link href="/assets/css/deps.min.css" rel="stylesheet">
         <link href="/assets/css/app.min.css" rel="stylesheet">
     </head>
     <body class="skin-blue fixed sidebar-mini">
         <div class="wrapper">
-            <header class="main-header" ng-include="'/template/header.html'"></header>
-            <aside class="main-sidebar" ng-include="'/template/menu.html'"></aside>
+            <header class="main-header" ng-include="'/template/header/header.html'"></header>
+            <aside class="main-sidebar" ng-include="'/template/menu/menu.html'"></aside>
             <div class="content-wrapper" ui-view></div>
-            <footer class="main-footer" ng-include="'/template/footer.html'"></footer>            
+            <footer class="main-footer" ng-include="'/template/footer/footer.html'"></footer>            
         </div>
 
         <script src="/assets/js/deps.min.js"></script>

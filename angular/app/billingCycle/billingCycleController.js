@@ -4,12 +4,13 @@
         '$location',
         'msgs',
         'tabs',
+        'consts',
         BillingCycleController
     ])
 
-    function BillingCycleController($http, $location, msgs, tabs) {
+    function BillingCycleController($http, $location, msgs, tabs, consts) {
         const vm = this;
-        const url = 'http://localhost:3003/api/billingCycles';
+        const url = `${consts.apiUrl}/billingCycles`;
 
         vm.refresh = function () {
             const pages = parseInt($location.search().page) || 1; //Pega o parametro da URL

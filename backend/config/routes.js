@@ -1,17 +1,29 @@
-const express = require('express');
+const express = require('express')
+const auth = require('./auth')
 
-/* Declarando funções no exports é a forma que voce usa para passar parametros para outro modulos. */
-module.exports = function(server) {
+module.exports = function (server) {
+    /*
+    * Rotas abertas
+    */
+    const openApi = express.Router()
+    server.use('/oapi', openApi)
 
-    //API Routes
-    const router = express.Router();
-    server.use('/api', router);
+    const AuthService = require('../api/user/authService')
+    openApi.post('/login', AuthService.login)
+    openApi.post('/signup', AuthService.signup)
+    openApi.post('/validateToken', AuthService.validateToken)
 
-    //rotas da API
-    const billingCyclesService = require('../api/billingCycles/billingCyclesService');
-    billingCyclesService.register(router, '/billingCycles');
+    /*
+    * Rotas protegidas por Token JWT
+    */
+    const protectedApi = express.Router()
+    server.use('/api', protectedApi)
 
-    /* Mapeando a rota manualmente */
-    const billingSummaryService = require('../api/billingSummary/billingSummaryService'); 
-    router.route('/billingSummary').get(billingSummaryService.getSummary)
+    protectedApi.use(auth)
+
+    const billingCycleService = require('../api/billingCycles/billingCyclesService')
+    billingCycleService.register(protectedApi, '/billingCycles')
+
+    const billingSummaryService = require('../api/billingSummary/billingSummaryService')
+    protectedApi.route('/billingSummary').get(billingSummaryService.getSummary)
 }
